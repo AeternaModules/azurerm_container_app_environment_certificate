@@ -7,6 +7,8 @@ Required:
 Optional:
     - certificate_blob_base64
     - certificate_password
+    - certificate_password_key_vault_id (alternative to certificate_password - read from Key Vault instead)
+    - certificate_password_key_vault_secret_name (alternative to certificate_password - read from Key Vault instead)
     - tags
     - certificate_key_vault (block):
         - identity (optional)
@@ -14,11 +16,13 @@ Optional:
 EOT
 
   type = map(object({
-    container_app_environment_id = string
-    name                         = string
-    certificate_blob_base64      = optional(string)
-    certificate_password         = optional(string)
-    tags                         = optional(map(string))
+    container_app_environment_id               = string
+    name                                       = string
+    certificate_blob_base64                    = optional(string)
+    certificate_password                       = optional(string)
+    certificate_password_key_vault_id          = optional(string)
+    certificate_password_key_vault_secret_name = optional(string)
+    tags                                       = optional(map(string))
     certificate_key_vault = optional(object({
       identity            = optional(string) # Default: "System"
       key_vault_secret_id = string
