@@ -1,3 +1,7 @@
+output "container_app_environment_certificates_id" {
+  description = "Map of id values across all container_app_environment_certificates, keyed the same as var.container_app_environment_certificates"
+  value       = { for k, v in azurerm_container_app_environment_certificate.container_app_environment_certificates : k => v.id }
+}
 output "container_app_environment_certificates_certificate_blob_base64" {
   description = "Map of certificate_blob_base64 values across all container_app_environment_certificates, keyed the same as var.container_app_environment_certificates"
   value       = { for k, v in azurerm_container_app_environment_certificate.container_app_environment_certificates : k => v.certificate_blob_base64 }
