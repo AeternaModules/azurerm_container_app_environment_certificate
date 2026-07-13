@@ -24,7 +24,7 @@ EOT
     certificate_password_key_vault_secret_name = optional(string)
     tags                                       = optional(map(string))
     certificate_key_vault = optional(object({
-      identity            = optional(string) # Default: "System"
+      identity            = optional(string)
       key_vault_secret_id = string
     }))
   }))
