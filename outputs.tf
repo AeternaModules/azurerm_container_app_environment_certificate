@@ -8,7 +8,7 @@ output "container_app_environment_certificates_certificate_blob_base64" {
 }
 output "container_app_environment_certificates_certificate_key_vault" {
   description = "Map of certificate_key_vault values across all container_app_environment_certificates, keyed the same as var.container_app_environment_certificates"
-  value       = { for k, v in azurerm_container_app_environment_certificate.container_app_environment_certificates : k => v.certificate_key_vault if v.certificate_key_vault != null && length(v.certificate_key_vault) > 0 }
+  value       = { for k, v in azurerm_container_app_environment_certificate.container_app_environment_certificates : k => one(v.certificate_key_vault) if v.certificate_key_vault != null && length(v.certificate_key_vault) > 0 }
 }
 output "container_app_environment_certificates_certificate_password" {
   description = "Map of certificate_password values across all container_app_environment_certificates, keyed the same as var.container_app_environment_certificates"
